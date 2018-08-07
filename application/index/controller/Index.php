@@ -1,7 +1,7 @@
 <?php
 namespace app\index\controller;
 
-use think\controller;
+use think\Controller;
 use think\Db;
 use think\Url;
 use think\captcha;
@@ -13,7 +13,7 @@ use org\util\VerificationCode;
 use org\util\RedisModel;
 use app\index\controller\User;
 
-class Index extends controller
+class Index extends Controller
 {
     public function index()
     {
@@ -112,8 +112,9 @@ class Index extends controller
     }
 
     public function hello($world = 'world'){
+        echo 234;die;
         $name = $this->request->param();
-//        dump($name['name']);die;
+//        dump($name);die;
         return 'hello'.$world.":::".$name['name'];
     }
     

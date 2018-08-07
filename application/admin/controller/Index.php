@@ -34,4 +34,13 @@ class Index extends BasicController
         $request = Request::instance();
         $id = $request->param();
     }
+    
+    //无效级商品分类
+    public function goods_type(){
+        $concat_path = db::query("select *,concat(`path`,',',`id`) as path from goods_type order by path");
+        foreach($concat_path as $k=>$v){
+            $concat_path[$k]['name'] = str_repeat("|---",$v['level']).$v['name'];
+        }
+        dump($concat_path);
+    }
 }

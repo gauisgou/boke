@@ -19,6 +19,7 @@
 			</div>
 			<!-- 轮播区域结束 -->
 			<p class="arc_show">博文</p>
+                        <!--<img src="http://qr.liantu.com/api.php?text=http://www.thinkphp.cn/topic/40391.html"/>-->
                         {volist name="article" id="vo"}
                             <div class="arc_left">
 				<div class="arc_left_date">
@@ -127,7 +128,7 @@
 		</div>
 	</div>
 
-
+<input type="submit" value="提交评论" id="sub"/>
 	<!--[if IE 6]>
     <script type="text/javascript" src="./js/iepng.js"></script>
     <script type="text/javascript">
@@ -137,3 +138,41 @@
 </body>
 </html>
 	<!-- 底部foot区域结束 -->
+<script>
+    $(document).ready(function(){
+       
+        var products = [];
+        products.push({product_id:1,count:3},{product_id:2,count:6})
+        $("#sub").click(function(){
+//            alert(23);
+            $.ajax({
+             type: "post",
+             url: "{:url('api/v1/order')}",
+             data: {products:products},
+             dataType: "json",
+             success: function(data){
+                 console.log(data);
+                 alert('post测试提交成功')
+//                 if(data['status'] == 200){
+//                     alert(data['msg'])
+//                 }else{
+//                     alert(data['msg'])
+//                 }
+////                         $('#resText').empty();   //清空resText里面的所有内容
+//                         var html = ''; 
+//                         $.each(data, function(commentIndex, comment){
+//                               html += '<div class="comment"><h6>' + comment['username']
+//                                         + ':</h6><p class="para"' + comment['content']
+//                                         + '</p></div>';
+//                         });
+//                         $('#resText').html(html);
+                      }
+         });
+            
+            
+//            alert($("#contents").val());
+//            alert($("#uname").val());
+        })
+  
+    })
+</script>

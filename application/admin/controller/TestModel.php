@@ -16,7 +16,7 @@ use app\admin\model\Users;
 //引入session的命名空间
 use think\Session;
 
-class TestModel extends Controller
+class TestModel
 {
     public function index()
     {
@@ -70,6 +70,8 @@ class TestModel extends Controller
     
     //日志记录
     public function log(){
+        Log::record('测试日志信息，这是警告级别','notice');
+echo 234;die;
         Log::error('错误日志');
         Log::info('普通日志信息');
         trace('写入普通日志','info');
